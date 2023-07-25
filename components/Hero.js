@@ -8,13 +8,19 @@ import { transparent } from "tailwindcss/colors";
 export default function Hero() {
   const colors = ["#0072CE", "#FFFFFF", "#43B02A", "#FF0000"];
   return (
-    <div className="flex flex-row justify-center items-start overflow-hidden">
+    <div className="flex flex-col  lg:flex-row justify-center items-start overflow-hidden">
+      <div className="lg:hidden  h-200 bg-gradient-to-t from-blue-500 h-400  w-[80%] mt-4rem rounded-t-[12rem] overflow-hidden p-1rem md:p-1.5rem mx-auto flex justify-center ">
+        <img src="/removed.png" className="flex justify-center" alt="me" />
+      </div>
       {/* Text container */}
+      <div className="flex md:hidden my-4 justify-center w-full  text-6xl font-serif font-bold text-gray-500">
+        I'm
+      </div>
       <div className="w-full md:w-1/2 mx-auto text-center md:text-left lg:p-20">
         <RoughNotationGroup show={true}>
           <RainbowHighlight color={colors[0]}>
             <h1 className="text-4xl md:text-8xl font-bold text-gray-700 dark:text-gray-200 my-2">
-              Developer.
+              Web developer
             </h1>
           </RainbowHighlight>
           <RainbowHighlight color={colors[3]}>
@@ -24,7 +30,7 @@ export default function Hero() {
           </RainbowHighlight>
           <RainbowHighlight color={colors[1]}>
             <h1 className="text-4xl md:text-8xl font-bold text-gray-700 dark:text-gray-200 my-2">
-              Designer.
+              Problem solver
             </h1>
           </RainbowHighlight>
           <RainbowHighlight color={colors[3]}>
@@ -34,7 +40,7 @@ export default function Hero() {
           </RainbowHighlight>
           <RainbowHighlight color={colors[2]}>
             <h1 className="text-4xl md:text-8xl font-bold text-gray-700 dark:text-gray-200 my-2">
-              Programmer.
+              Still student... .
             </h1>
           </RainbowHighlight>
         </RoughNotationGroup>

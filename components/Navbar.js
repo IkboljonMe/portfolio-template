@@ -17,18 +17,25 @@ export default function Navbar() {
   return (
     <div className="max-w-6xl  mx-auto px-4 py-10 md:py-20">
       <div className="flex  md:flex-row justify-between items-center">
-        <div className="flex flex-col">
-          <Link href="/">
-            <h1 className="font-semibold text-xl dark:text-gray-100">
-              {userData.name}
-            </h1>
-            <p className="text-base font-light text-gray-500 dark:text-gray-300">
-              {userData.designation}
-            </p>
-          </Link>
+        <div className="flex md:flex-row items-center justify-center gap-4">
+          <img
+            class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+            src="https://avatars.githubusercontent.com/ikboljonme"
+            alt="Bordered avatar"
+          />
+          <div className="flex flex-col">
+            <Link href="/">
+              <h1 className="font-semibold text-xl dark:text-gray-100">
+                {userData.name}
+              </h1>
+              <p className="hidden md:block text-base font-light text-gray-500 dark:text-gray-300">
+                {userData.designation}
+              </p>
+            </Link>
+          </div>
         </div>
 
-        <div className="space-x-8 hidden md:block">
+        <div className="space-x-8 hidden md:block ">
           <Link
             href="/about"
             className={`text-base  ${
@@ -37,7 +44,7 @@ export default function Navbar() {
                 : "text-gray-600 dark:text-gray-300 font-normal "
             }`}
           >
-            About{" "}
+            About
             {router.asPath === "/about" && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,8 +138,12 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="space-x-4 flex flex-row items-center">
-          <a href={userData.socialLinks.instagram} x>
+        <div className="flex flex-row items-center gap-4">
+          <a
+            className="hidden md:block"
+            href={userData.socialLinks.instagram}
+            x
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -146,7 +157,7 @@ export default function Navbar() {
           </a>
           <a
             href={userData.socialLinks.twitter}
-            className="text-base font-normal text-gray-600 dark:text-gray-300"
+            className=" hidden md:block text-base font-normal text-gray-600 dark:text-gray-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +172,7 @@ export default function Navbar() {
           </a>
           <a
             href={userData.socialLinks.linkedin}
-            className="text-base font-normal text-gray-600 dark:text-gray-300"
+            className="hidden md:block text-base font-normal text-gray-600 dark:text-gray-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -208,25 +219,28 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      <div className="space-x-8 block md:hidden mt-4">
+      <div className="md:hidden w-[80%] mx-auto  mt-10 flex-row flex justify-between">
         <Link
           href="/about"
           className="text-base font-normal text-gray-600 dark:text-gray-300"
         >
           About
         </Link>
+
         <Link
           href="/projects"
           className="text-base font-normal text-gray-600 dark:text-gray-300"
         >
           Projects
         </Link>
+
         <Link
           href="/experience"
           className="text-base font-normal text-gray-600 dark:text-gray-300"
         >
           Experience
         </Link>
+
         <Link
           href="/contact"
           className="text-base font-normal text-gray-600 dark:text-gray-300"

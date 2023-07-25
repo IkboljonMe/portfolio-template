@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'fonts.css';
+@import "fonts.css";
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Inter var', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Inter var", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 a {
   color: inherit;
@@ -18,4 +18,17 @@ a {
 
 * {
   box-sizing: border-box;
+}
+/* styles.css (or any other appropriate filename) */
+
+@keyframes profile__animate {
+  0% {
+    border-radius: 80% 50% 35% 75%/70% 35% 75% 50%;
+  }
+  50% {
+    border-radius: 70% 40% 55% 60%/40% 50% 50% 70%;
+  }
+  100% {
+    border-radius: 80% 50% 35% 75%/70% 35% 75% 50%;
+  }
 }
