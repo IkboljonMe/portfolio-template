@@ -6,7 +6,6 @@ import userData from "@constants/data";
 
 export default function Navbar() {
   const router = useRouter();
-  console.log(router.asPath);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -19,7 +18,7 @@ export default function Navbar() {
       <div className="flex  md:flex-row justify-between items-center">
         <div className="flex md:flex-row items-center justify-center gap-4">
           <img
-            class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+            className="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
             src="https://avatars.githubusercontent.com/ikboljonme"
             alt="Bordered avatar"
           />
@@ -139,11 +138,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-row items-center gap-4">
-          <a
-            className="hidden md:block"
-            href={userData.socialLinks.instagram}
-            x
-          >
+          <a className="hidden md:block" href={userData.socialLinks.instagram}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
