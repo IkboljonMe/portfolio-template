@@ -21,8 +21,7 @@ export default function Home({ repositories }) {
 }
 
 export const getServerSideProps = async () => {
-  let token = process.env.GITHUB_AUTH_TOKEN;
-  const repositories = await getAllRepos(userData, token);
+  const repositories = await getAllRepos(userData);
   return {
     props: {
       repositories,
