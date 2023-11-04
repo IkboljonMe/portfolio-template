@@ -4,11 +4,10 @@ import ContainerBlock from "../components/ContainerBlock";
 import FavouriteProjects from "../components/FavouriteProjects";
 import LatestCode from "../components/LatestCode";
 import Hero from "../components/Hero";
-import getLatestRepos from "@lib/getLatestRepos";
+import getAllRepos from "@lib/getAllRepos";
 import userData from "@constants/data";
 
 export default function Home({ repositories }) {
-  console.log(repositories, "HEREEEE");
   return (
     <ContainerBlock
       title="IkboljonMe - Developer, Writer, Creator"
@@ -20,13 +19,11 @@ export default function Home({ repositories }) {
     </ContainerBlock>
   );
 }
-console.log(process.env.GITHUB_AUTH_TOKEN, "token");
+
 export const getServerSideProps = async () => {
-  let token = "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";
-
-  const repositories = await getLatestRepos(userData, token);
-  // console.log("REPOSITORIES", repositories);
-
+  let token = process.env.GITHUB_AUTH_TOKEN;
+  console.log(token, "TOKEN");
+  const repositories = await getAllRepos(userData, token);
   return {
     props: {
       repositories,
