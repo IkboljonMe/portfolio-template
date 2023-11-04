@@ -15,7 +15,7 @@ export default function AboutMe() {
             className="leading-loose text-2xl md:text-4xl font-semibold  mx-4"
             style={{ lineHeight: "3rem" }}
           >
-            {userData.about.title}. Currently working on{" "}
+            {userData.about.title}. Currently working on
             <a
               className="bg-red-500 rounded-md px-2 py-1 text-white"
               href={userData.about.currentProjectUrl}
@@ -34,13 +34,13 @@ export default function AboutMe() {
                 Contact
               </h1>
               <p className="text-lg text-gray-500 mt-4 dark:text-gray-300">
-                For any sort help / enquiry, shoot a{" "}
+                For any sort help / enquiry, shoot a
                 <a
                   href={`mailto:${userData.email}`}
                   className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
                 >
                   mail
-                </a>{" "}
+                </a>
                 and I'll get back. I swear.
               </p>
             </div>
@@ -50,14 +50,14 @@ export default function AboutMe() {
               </h1>
               <p className="text-lg text-gray-500 mt-4 dark:text-gray-300">
                 I'm looking for a job currently, If you see me as a good fit,
-                check my{" "}
+                check my
                 <a
                   href={userData.resumeUrl}
                   target="__blank"
                   className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
                 >
                   CV
-                </a>{" "}
+                </a>
                 and I'd love to work for you.
               </p>
             </div>

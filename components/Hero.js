@@ -44,7 +44,7 @@ export default function Hero() {
             </h1>
           </RainbowHighlight>
         </RoughNotationGroup>
-      </div>{" "}
+      </div>
       {/* Image container */}
       <div className="hidden lg:block relative w-full md:w-1/2 -mr-40 mt-20">
         <div className="w-3/4 ">
@@ -68,7 +68,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 }
