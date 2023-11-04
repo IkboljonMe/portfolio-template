@@ -5,7 +5,7 @@ import userData from "@constants/data";
 
 export default function LatestCode({ repositories }) {
   const [repos, setRepos] = useState(repositories);
-
+  console.log(repos, "REPOLAR");
   return (
     <section className="bg-[#F1F1F1] -mt-40 dark:bg-gray-900 pb-40">
       <div className="max-w-6xl mx-auto">
