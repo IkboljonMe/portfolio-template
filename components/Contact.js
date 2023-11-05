@@ -23,12 +23,31 @@ export default function Contact() {
         },
         (error) => {
           console.log(error.text, "ERROR");
+          toast("Erros, please check your message", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         }
       );
     if (form.current) {
       form.current.reset();
     }
-    toast("Wow so easy !");
+    toast("Your message succesfully sent✅. We will reply soon", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
   return (
     <>
