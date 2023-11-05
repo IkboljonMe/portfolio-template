@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "axios": "^0.21.1",
     "next": "latest",
     "next-themes": "latest",

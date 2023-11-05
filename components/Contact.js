@@ -1,7 +1,31 @@
 import React from "react";
 import userData from "@constants/data";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
+        process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
+        form.current,
+        process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text, "ERROR");
+        }
+      );
+    if (form.current) {
+      form.current.reset();
+    }
+  };
   return (
     <section>
       <div className="max-w-6xl mx-auto h-48 bg-white dark:bg-gray-800 antialiased">
@@ -141,16 +165,23 @@ export default function Contact() {
               </a>
             </div>
           </div>
-          <form className="form rounded-lg bg-white p-4 flex flex-col">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="form rounded-lg bg-white p-4 flex flex-col"
+          >
             <label htmlFor="name" className="text-sm text-gray-600 mx-4">
               Your Name
             </label>
             <input
               type="text"
               className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
-              name="name"
+              name="user_name"
             />
-            <label htmlFor="email" className="text-sm text-gray-600 mx-4 mt-4">
+            <label
+              htmlFor="user_email"
+              className="text-sm text-gray-600 mx-4 mt-4"
+            >
               Email
             </label>
             <input
