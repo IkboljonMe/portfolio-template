@@ -1,90 +1,85 @@
-# Portfolio Template Project
+# Portfolio Template
 
-This is a small portfolio template project built using Next.js. It's designed to serve as a simple starting point for creating a personal portfolio website. You can easily customize the content and styling to showcase your work, skills, and personal information.
+This is my personal portfolio website built with Next.js and Tailwind CSS. I built it to show my projects, my experience and my latest GitHub repos in one place. It also works as a template, so you can put your own data in and use it for yourself.
 
-# Table of Contents
+Live demo: https://portfolioo-puce-nu.vercel.app
 
-1. [Getting Started](#getting-started)
-2. [Contact Form Setup](#contact-form-with-email.js)
-3. [Contributing](#contributing)
-4. [License](#license)
-5. [TODO](#todo)
+The design is based on the developer portfolio template by [Manu Arora](https://github.com/manuarora700). I changed it with my own content and added some parts, like the EmailJS contact form.
 
-## Features
+## What it does
 
-- Home section with an introduction and profile image.
-- Projects section to showcase your projects.
-- About section for more detailed information about yourself.
-- Contact section with your contact information.
-- Experience section to show you experience if you have
+- Home page with a short intro, my favourite projects and my latest GitHub repos
+- The "Latest Code" section loads my public repos from the GitHub API on every request
+- About page with a short bio, social links and the tech I use
+- Projects page with cards for each project
+- Experience page with a simple timeline
+- Contact page with a form that sends the message to my email with EmailJS
+- Dark mode toggle
 
-## Getting Started
+## Built with
 
-Follow these steps to set up and run the project on your local machine:
+- Next.js 13 (pages router)
+- React 18
+- Tailwind CSS
+- next-themes (dark mode)
+- EmailJS (`@emailjs/browser`) for the contact form
+- react-toastify for the success / error messages
+- react-rough-notation for the highlight animation on the home page
+- GitHub REST API for the repo list
 
-1. Clone the repository:
+## How to run
 
-```bash
-git clone git@github.com:IkboljonMe/portfolio-template.git
-```
-
-2. Install project dependencies using `npm` with the `--legacy-peer-deps` flag to address any peer dependency issues:
-
-```bash
-npm install --legacy-peer-deps
-```
-
-3. Start the development server:
+You need Node.js 18 or newer.
 
 ```bash
+git clone https://github.com/IkboljonMe/portfolio-template.git
+cd portfolio-template
+npm install
+cp .env.example .env
 npm run dev
 ```
 
-## Contact Form with email.js
+Then open http://localhost:3000.
 
-This portfolio template includes a contact form powered by [email.js](https://www.emailjs.com/), which allows you to send emails directly from your website. To set up and use the contact form, follow these steps:
-
-1. Sign up on the [email.js website](https://www.emailjs.com/) and create an account.
-
-2. After signing in, create an email service on email.js. This service will be used to send emails from your contact form.
-
-3. Once you've created a service, configure your email template. You can customize the email content, subject, and other details to suit your needs.
-
-4. In your project, you'll find a file named `components/Contact.js`. Open this file, and you'll see the following lines:
+To make a production build:
 
 ```bash
-  .sendForm(
-       process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
-       process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
-       form.current,
-       process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY
-     )
-     .then( other codes...)
+npm run build
+npm start
 ```
 
-5, Create .env file as .env.example file and configure required variables. Enjoy🤓
+## Environment variables
 
-## Contributing
+The contact form uses EmailJS. Make a free account on [emailjs.com](https://www.emailjs.com/), create an email service and an email template, then put the values in `.env`:
 
-Contributions to this project are welcome! If you'd like to contribute, please follow these guidelines:
+| Variable | What it is |
+| --- | --- |
+| `NEXT_PUBLIC_YOUR_SERVICE_ID` | Service ID from the EmailJS dashboard |
+| `NEXT_PUBLIC_YOUR_TEMPLATE_ID` | Template ID of your email template |
+| `NEXT_PUBLIC_YOUR_PUBLIC_KEY` | Your EmailJS public key (Account page) |
 
-1. **Issues:** If you find a bug or have a suggestion, please [open an issue](https://github.com/IkboljonMe/portfolio-template/issues) to discuss it.
+The form sends the fields `user_name`, `email` and `message`, so use these names in your EmailJS template. Without these variables the site still works, only the contact form will show an error.
 
-2. **Pull Requests:** To contribute code or documentation, submit a pull request to the [GitHub repository](https://github.com/IkboljonMe/portfolio-template/pulls).
+## Use it for yourself
 
-3. **Coding Standards:** Ensure that your code follows the project's coding standards and conventions. If any guidelines or specific practices are required, mention them in the pull request description.
+Most of the content is in `constants/data.js` (name, links, projects, experience, about text, GitHub username). Change it to your own data and replace the images in `public/`. The three cards on the home page are in `components/FavouriteProjects.js`.
 
-4. **Documentation:** Update the documentation, including the README file, if your changes impact how the project is used.
+## Project structure
 
-Thank you for your contributions to this project!
+```
+components/   page sections (Navbar, Hero, Contact, Footer, ...)
+constants/    data.js with all my personal data
+lib/          getAllRepos.js loads repos from GitHub
+pages/        Next.js pages (index, about, projects, experience, contact)
+public/       images
+styles/       global CSS and fonts
+fonts/        font files
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/IkboljonMe/portfolio-template/blob/main/LICENSE.txt) file for details. You are free to use, modify, and distribute this project in accordance with the terms of the MIT License.
+MIT, see [LICENSE.txt](LICENSE.txt).
 
-## TODO
+---
 
-- [ ] Better theme(dark) in Contact.js
-- [ ] Make better responsive friendly(Flag)
-- [ ] Footer margin bug.
-- [ ] Change content(add new projects and etc)
+Made by [IkboljonMe](https://github.com/IkboljonMe)
