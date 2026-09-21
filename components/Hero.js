@@ -1,9 +1,7 @@
 import React from "react";
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
+import { RoughNotationGroup } from "react-rough-notation";
 import { RainbowHighlight } from "./RainbowHighlight";
 import userData from "@constants/data";
-import { RainbowSmall } from "./RainbowSmall";
-import { transparent } from "tailwindcss/colors";
 
 export default function Hero() {
   const colors = ["#0072CE", "#FFFFFF", "#43B02A", "#FF0000"];

@@ -32,7 +32,7 @@ const userData = {
       `But now, I'm a legend. I've been coding in React, Nextjs, Node.js, Express, MongoDB, MySQL,MUI Bootstrap, Tailwind, Python, and YouDontKnowShit programming language etc to name a few. Although I barely know the syntax (Psst, Stack overflow!), I consider myself a Ninja developer I'm laughing right now.`,
     ],
     currentProject: "Portfolio",
-    currentProjectUrl: "https://ikboljon.com/",
+    currentProjectUrl: "https://portfolioo-puce-nu.vercel.app/",
   },
   experience: [
     {
@@ -43,19 +43,19 @@ const userData = {
       desc: "Contributed to the creation of high-quality web-based applications and software solutions for clients using React, Prisma, and PostgreSQL,Utilized external libraries like SWR and React Query to simplify data management and enhance code quality. Implemented multi-stage services in Docker containerization, leading to a more efficient workflow with reduced caching time and faster debugging",
     },
     {
-      title: "Graduation Presidental School",
+      title: "Graduation Presidential School",
       company: "School named Mirzo Ulugbek in Tashkent",
       year: "2021",
       companyLink:
         "https://www.facebook.com/p/Mirzo-Ulugbek-nomidagi-ixtisoslashtirilgan-maktab-100085626396500/",
-      desc: "Major in Computer Science and Astranomy,graduated 96,5% mark. Nobody asks this but it's okay.",
+      desc: "Major in Computer Science and Astronomy, graduated 96,5% mark. Nobody asks this but it's okay.",
     },
     {
       title: "Specialized School",
       company: "Specialized Boarding School in Fergana",
       year: "2019",
       companyLink: "",
-      desc: "Specialized for Math, Computer scinece ",
+      desc: "Specialized for Math, Computer science",
     },
   ],
   resumeUrl: "https://drive.google.com/file",

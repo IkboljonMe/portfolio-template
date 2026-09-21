@@ -1,5 +1,3 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import ContainerBlock from "../components/ContainerBlock";
 import FavouriteProjects from "../components/FavouriteProjects";
 import LatestCode from "../components/LatestCode";
@@ -11,7 +9,7 @@ export default function Home({ repositories }) {
   return (
     <ContainerBlock
       title="IkboljonMe - Developer, Writer, Creator"
-      description="This is a template built specifically for my blog - Creating a developer portfolio that gets you a job."
+      description="Portfolio of Ikboljon Abdurasulov - my projects, experience and latest code on GitHub."
     >
       <Hero />
       <FavouriteProjects />
@@ -21,7 +19,18 @@ export default function Home({ repositories }) {
 }
 
 export const getServerSideProps = async () => {
-  const repositories = await getAllRepos(userData);
+  const allRepos = await getAllRepos(userData);
+  // Only send the fields the page uses, the full GitHub response is very big
+  const repositories = allRepos.map(
+    ({ id, name, description, html_url, license, archived }) => ({
+      id,
+      name,
+      description,
+      html_url,
+      license: license ? license.key : null,
+      archived,
+    })
+  );
   return {
     props: {
       repositories,

@@ -8,46 +8,45 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Contact() {
   const form = useRef();
 
+  const toastOptions = {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  };
+
+  const onError = (error) => {
+    console.error(error, "ERROR");
+    toast("Error, your message was not sent. Please try again", toastOptions);
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
-        process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
-        form.current,
-        process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text, "ERROR");
-          toast("Erros, please check your message", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        }
-      );
-    if (form.current) {
-      form.current.reset();
+    try {
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
+          process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
+          form.current,
+          process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY
+        )
+        .then(() => {
+          if (form.current) {
+            form.current.reset();
+          }
+          toast(
+            "Your message was successfully sent ✅. I will reply soon",
+            toastOptions
+          );
+        }, onError);
+    } catch (error) {
+      // sendForm throws right away if the EmailJS env variables are missing
+      onError(error);
     }
-    toast("Your message succesfully sent✅. We will reply soon", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
   };
   return (
     <>
@@ -194,11 +193,13 @@ export default function Contact() {
               onSubmit={sendEmail}
               className="form rounded-lg bg-white p-4 flex flex-col"
             >
-              <label htmlFor="name" className="text-sm text-gray-600 mx-4">
+              <label htmlFor="user_name" className="text-sm text-gray-600 mx-4">
                 Your Name
               </label>
               <input
                 type="text"
+                id="user_name"
+                required
                 className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
                 name="user_name"
               />
@@ -209,7 +210,9 @@ export default function Contact() {
                 Email
               </label>
               <input
-                type="text"
+                type="email"
+                id="user_email"
+                required
                 className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
                 name="email"
               />
@@ -221,7 +224,8 @@ export default function Contact() {
               </label>
               <textarea
                 rows="4"
-                type="text"
+                id="message"
+                required
                 className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
                 name="message"
               ></textarea>

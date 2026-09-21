@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import getAllRepos from "@lib/getAllRepos";
+import React from "react";
 import userData from "@constants/data";
 
 export default function LatestCode({ repositories }) {
-  const [repos, setRepos] = useState(repositories);
-  const filteredRepos = repos.filter(
+  const filteredRepos = (repositories || []).filter(
     (repo) => repo.license !== null && repo.archived === false
   );
   return (
@@ -43,8 +40,8 @@ export default function LatestCode({ repositories }) {
         {/* Single github Repo */}
 
         {filteredRepos &&
-          filteredRepos.map((latestRepo, index) => (
-            <GithubRepoCard latestRepo={latestRepo} key={index} />
+          filteredRepos.map((latestRepo) => (
+            <GithubRepoCard latestRepo={latestRepo} key={latestRepo.id} />
           ))}
       </div>
     </section>
@@ -61,7 +58,7 @@ const GithubRepoCard = ({ latestRepo }) => {
         {latestRepo.description}
       </p>
       <a
-        href={latestRepo.clone_url}
+        href={latestRepo.html_url}
         className="font-semibold group flex flex-row space-x-2 w-full items-center"
       >
         <p>View Repository </p>
